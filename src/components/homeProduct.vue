@@ -29,7 +29,6 @@
                 <div class="comment" v-if="item.comment <= 500000 && item.comment > 200000">20万+条评论</div>
                 <div class="comment" v-if="item.comment > 500000">50万+条评论</div>
             </div>
-            
         </div>
     </div>
 </template>
