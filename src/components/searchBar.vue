@@ -16,6 +16,7 @@
         background-color: #E43130;
         height: 44px;
         text-align: center;
+        width: 100%;
         
         .left {
         float: left;

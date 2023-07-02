@@ -29,15 +29,18 @@
                 <div class="comment" v-if="item.comment <= 500000 && item.comment > 200000">20万+条评论</div>
                 <div class="comment" v-if="item.comment > 500000">50万+条评论</div>
             </div>
-            
         </div>
+        <bottomBar></bottomBar>
     </div>
 </template>
 
 <script>
-import { computed } from 'vue';
+import bottomBar from "./bottomBar.vue";
 
 export default {
+    components: {
+        bottomBar
+    },
     data() {
         return {
             list: [
@@ -138,77 +141,81 @@ export default {
 </script>
 
 <style lang="less">
-    .product {
-        width: 50%;
-        text-align: center;
-        margin-bottom: 20px;
+    #products {
+        width: 100%;
 
-        #productPic {
-            width: 90%;
-            border-radius: 10px;
-        }
+        .product {
+            width: 50%;
+            text-align: center;
+            margin-bottom: 20px;
 
-        #info {
-            width: 80%;
-            padding: 0 18px 18px;
-
-            #describe {
-                width: 100%;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                word-break: break-all;
-                -webkit-box-orient: vertical;
-                font-size: 16px;
-                line-height: 26px;
-                height: 52px;
-                text-align: left;
-                
-
-                #type {
-                    height: 16px;
-                    top: 3px;
-                    margin-right: 5px;
-                    position: relative;
-                }
+            #productPic {
+                width: 90%;
+                border-radius: 10px;
             }
 
-            .price {
-                color: #ff4142;
-                width: 100%;
-                text-align: left;
-                margin-top: 4px;
-                margin-bottom: 10px;
+            #info {
+                width: 80%;
+                padding: 0 18px 18px;
 
-                #priceInt {
-                    font-size: 24px;
-                }
-
-                .priceFloat {
+                #describe {
+                    width: 100%;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    word-break: break-all;
+                    -webkit-box-orient: vertical;
                     font-size: 16px;
+                    line-height: 26px;
+                    height: 52px;
+                    text-align: left;
+                    
+
+                    #type {
+                        height: 16px;
+                        top: 3px;
+                        margin-right: 5px;
+                        position: relative;
+                    }
                 }
 
-                #discount {
+                .price {
+                    color: #ff4142;
+                    width: 100%;
+                    text-align: left;
+                    margin-top: 4px;
+                    margin-bottom: 10px;
+
+                    #priceInt {
+                        font-size: 24px;
+                    }
+
+                    .priceFloat {
+                        font-size: 16px;
+                    }
+
+                    #discount {
+                        font-size: 12px;
+                        border: 1px solid #ff4142;
+                        margin-left: 10px;
+                        padding: 2px;
+                        border-radius: 2px;
+                    }
+                }
+
+                .saleType {
+                    display: block;
+                    float: left;
+                    height: 16px;
+                    margin-right: 10px;
+                }
+
+                .comment {
+                    color: #999999;
                     font-size: 12px;
-                    border: 1px solid #ff4142;
-                    margin-left: 10px;
-                    padding: 2px;
-                    border-radius: 2px;
+                    float: left;
                 }
-            }
-
-            .saleType {
-                display: block;
-                float: left;
-                height: 16px;
-                margin-right: 10px;
-            }
-
-            .comment {
-                color: #999999;
-                font-size: 12px;
-                float: left;
             }
         }
     }
