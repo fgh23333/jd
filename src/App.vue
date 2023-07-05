@@ -21,4 +21,26 @@
   .top {
     float: top;
   }
+
+  .clear {
+    overflow: hidden;
+    zoom: 1;
+  }
+
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .flex-item {
+    flex: 1;
+  }
+
+  .bolder {
+    font-weight: bolder;
+  }
 </style>

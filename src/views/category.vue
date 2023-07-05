@@ -1,7 +1,7 @@
 <template>
-    <div id="cart">
-        购物车
-        <bottomBar active="/cart"></bottomBar>
+  <div class="category">
+    <h1>分类</h1>
+    <bottomBar active="/category"></bottomBar>
   </div>
 </template>
 

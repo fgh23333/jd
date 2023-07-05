@@ -1,7 +1,7 @@
 <template>
     <div id="bottomBar">
         <div class="icon left" v-for="(item,index) in list" :key="index">
-            <img id="guideIcon" :src="item.src">
+            <router-link :to="item.url"><img id="guideIcon" :src="active == item.url ? item.act : item.src"></router-link>
         </div>
     </div>
 </template>
@@ -12,18 +12,32 @@ export default {
         return {
             list: [
                 {
-                    src: require("../assets/icon/10066.png")
+                    url: "/",
+                    src: require("../assets/icon/10070.png"),
+                    act: require("../assets/icon/10066.png")
                 },
                 {
-                    src: require("../assets/icon/10067.png")
+                    url: "/category",
+                    src: require("../assets/icon/10067.png"),
+                    act: require("../assets/icon/10065.png")
                 },
                 {
-                    src: require("../assets/icon/10068.png")
+                    url: "/cart",
+                    src: require("../assets/icon/10068.png"),
+                    act: require("../assets/icon/10071.png")
                 },
                 {
-                    src: require("../assets/icon/10069.png")
+                    url: "/me",
+                    src: require("../assets/icon/10069.png"),
+                    act: require("../assets/icon/10072.png")
                 }
             ]
+        }
+    },
+    props: {
+        active: {
+            type: String,
+            default: "/"
         }
     }
 }
@@ -37,6 +51,7 @@ export default {
         text-align: center;
         background-color: white;
         width: 100%;
+        height: 50px;
         
         .icon {
             width: 25%;

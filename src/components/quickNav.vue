@@ -1,5 +1,5 @@
 <template>
-    <div id="quickNav">
+    <div id="quickNav" class="clear">
         <div class="box left" v-for="(item, index) in list" :key="index">
             <img class="photo" :src="item.src">
             <div class="word">{{item.name}}</div>

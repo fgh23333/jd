@@ -1,50 +1,48 @@
 <template>
-    <div id="products">
+    <div id="products" class="clear">
         <div class="product left" v-for="(item,index) in list" :key="index">
-            <img id="productPic" :src="item.src">
+            <router-link :to="'/product/'+ item.id + '?img=' + item.src">
+            <img id="productPic" :src="item.img">
             <div id="info">
                 <div id="describe">
-                    <img id="type" v-if="item.marketType == 1" src="../assets/product/mt.png">{{item.describe}}
+                    <img id="type" v-if="item.marketType == 1" src="../assets/product/mt.png">{{item.name}}
                 </div>
-                <div class="price left">&yen
-                    <span id="priceInt">{{parseInt(item.price)}}</span>
+                <div class="price left">
+                &yen<span id="priceInt">{{parseInt(item.price)}}</span>
                     <span class="priceFloat">.{{parseInt(item.price * 100) - parseInt(item.price) * 100}}</span>
                     <span class="priceFloat" v-if="parseInt(item.price * 100) - parseInt(item.price) * 100 == 0">0</span>
-                    <span id="discount" v-if="item.discount != '0'">{{item.discount}}</span>
+                    <!-- <span id="discount" v-if="item.discount != '0'">{{item.discount}}</span> -->
                 </div>
                 <img class="saleType" v-if="item.saleType == 1" src="../assets/product/self.png">
                 <img class="saleType" v-if="item.saleType == 2" src="../assets/product/log.png">
-                <div class="comment" v-if="item.comment  == 0"></div>
-                <div class="comment" v-if="item.comment <= 100 && item.comment > 0">{{item.comment}}条评论</div>
-                <div class="comment" v-if="item.comment <= 200 && item.comment > 100">100+条评论</div>
-                <div class="comment" v-if="item.comment <= 500 && item.comment > 200">200+条评论</div>
-                <div class="comment" v-if="item.comment <= 1000 && item.comment > 500">500+条评论</div>
-                <div class="comment" v-if="item.comment <= 2000 && item.comment > 1000">1000+条评论</div>
-                <div class="comment" v-if="item.comment <= 5000 && item.comment > 2000">2000+条评论</div>
-                <div class="comment" v-if="item.comment <= 10000 && item.comment > 5000">5000+条评论</div>
-                <div class="comment" v-if="item.comment <= 20000 && item.comment > 10000">1万+条评论</div>
-                <div class="comment" v-if="item.comment <= 50000 && item.comment > 20000">2万+条评论</div>
-                <div class="comment" v-if="item.comment <= 100000 && item.comment > 50000">5万+条评论</div>
-                <div class="comment" v-if="item.comment <= 200000 && item.comment > 100000">10万+条评论</div>
-                <div class="comment" v-if="item.comment <= 500000 && item.comment > 200000">20万+条评论</div>
-                <div class="comment" v-if="item.comment > 500000">50万+条评论</div>
+                <div class="comment" v-if="item.count  == 0"></div>
+                <div class="comment" v-if="item.count <= 100 && item.count > 0">{{item.comment}}条评论</div>
+                <div class="comment" v-if="item.count <= 200 && item.count > 100">100+条评论</div>
+                <div class="comment" v-if="item.count <= 500 && item.count > 200">200+条评论</div>
+                <div class="comment" v-if="item.count <= 1000 && item.count > 500">500+条评论</div>
+                <div class="comment" v-if="item.count <= 2000 && item.count > 1000">1000+条评论</div>
+                <div class="comment" v-if="item.count <= 5000 && item.count > 2000">2000+条评论</div>
+                <div class="comment" v-if="item.count <= 10000 && item.count > 5000">5000+条评论</div>
+                <div class="comment" v-if="item.count <= 20000 && item.count > 10000">1万+条评论</div>
+                <div class="comment" v-if="item.count <= 50000 && item.count > 20000">2万+条评论</div>
+                <div class="comment" v-if="item.count <= 100000 && item.count > 50000">5万+条评论</div>
+                <div class="comment" v-if="item.count <= 200000 && item.count > 100000">10万+条评论</div>
+                <div class="comment" v-if="item.count <= 500000 && item.count > 200000">20万+条评论</div>
+                <div class="comment" v-if="item.count > 500000">50万+条评论</div>
             </div>
+            </router-link>
         </div>
-        <bottomBar></bottomBar>
     </div>
 </template>
 
 <script>
-import bottomBar from "./bottomBar.vue";
-
+import axios from "axios"
 export default {
-    components: {
-        bottomBar
-    },
     data() {
         return {
             list: [
                 {
+                    id: 0,
                     marketType: 0,
                     describe: "享食者无骨鸡爪柠檬酸辣网红即食罐装脱骨泡椒去骨凤爪零食小吃休闲食品 柠檬酸辣味【发3件共900g】",
                     saleType: 0,
@@ -54,6 +52,7 @@ export default {
                     src: require("../assets/product/1.png")
                 },
                 {
+                    id: 1,
                     marketType: 1,
                     describe: "蒙牛 纯牛奶 PURE MILK 250ml*16 每100ml含3.2g蛋白质",
                     saleType: 1,
@@ -63,6 +62,7 @@ export default {
                     src: require("../assets/product/2.png")
                 },
                 {
+                    id: 2,
                     marketType: 0,
                     describe: "典枫全铜新中式吊灯客厅灯玉石餐厅灯卧室禅意中国风中山别墅灯具套餐 6头（铜+玉石）全光谱三色灯泡",
                     saleType: 0,
@@ -72,6 +72,7 @@ export default {
                     src: require("../assets/product/3.png")
                 },
                 {
+                    id: 3,
                     marketType: 1,
                     describe: "伊利 安慕希希腊风味酸奶 原味205g*16盒/箱 多35%蛋白质 礼盒装",
                     saleType: 1,
@@ -81,6 +82,7 @@ export default {
                     src: require("../assets/product/4.png")
                 },
                 {
+                    id: 4,
                     marketType: 0,
                     describe: "老板（Robam）抽油烟机 欧式双腔21m³/min大吸力油烟机4.5kW小尺寸灶具燃气灶烟灶套装60A1+32B7D(天然气)",
                     saleType: 1,
@@ -90,6 +92,7 @@ export default {
                     src: require("../assets/product/5.png")
                 },
                 {
+                    id: 5,
                     marketType: 0,
                     describe: "IVGO 蓝牙耳机真无线双耳运动跑步游戏适用于苹果华为vivo荣耀oppo一加手机通用",
                     saleType: 2,
@@ -99,6 +102,7 @@ export default {
                     src: require("../assets/product/6.png")
                 },
                 {
+                    id: 6,
                     marketType: 1,
                     describe: "欧莱雅透明质酸水润洗发水护发素洗护套装无硅油(洗500ml*2+护500ml*1)",
                     saleType: 1,
@@ -108,6 +112,7 @@ export default {
                     src: require("../assets/product/7.png")
                 },
                 {
+                    id: 7,
                     marketType: 1,
                     describe: "李宁（LI-NING）篮球7号CBA比赛成人儿童青少年中考室内外训练标准七号蓝球 PU443",
                     saleType: 1,
@@ -117,6 +122,7 @@ export default {
                     src: require("../assets/product/8.png")
                 },
                 {
+                    id: 8,
                     marketType: 0,
                     describe: "ANDSEEYOU品牌 高级感小众设计真皮女包2023腋下包单肩包女托特包生日礼物 黑色",
                     saleType: 2,
@@ -126,6 +132,7 @@ export default {
                     src: require("../assets/product/9.png")
                 },
                 {
+                    id: 9,
                     marketType: 0,
                     describe: "华为HUAWEI 原装6A数据线 USB Type-A转USB Type-C/1m线长/支持66W（11V6A）充电 白色CC790",
                     saleType: 1,
@@ -136,6 +143,15 @@ export default {
                 }
             ]
         }
+    },
+    created() {
+        axios({
+            method: "get",
+            url: "http://leeyiqing.site/product.php"
+        }).then(res => {
+            console.log(res)
+            this.list = res.data
+        })
     }
 }
 </script>

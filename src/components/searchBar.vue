@@ -1,5 +1,5 @@
 <template>
-    <div id="searchBar">
+    <div id="searchBar" class="clear">
         <div id="menu" class="left">菜单</div>
         <div id="search" class="left">
             <div id="inputbox">
@@ -17,6 +17,7 @@
         height: 44px;
         text-align: center;
         width: 100%;
+        position: fixed;
         
         .left {
         float: left;
