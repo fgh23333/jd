@@ -147,7 +147,7 @@ export default {
     created() {
         axios({
             method: "get",
-            url: "http://leeyiqing.site/product.php"
+            url: "https://tunnel.alni.ml/"
         }).then(res => {
             console.log(res)
             this.list = res.data
