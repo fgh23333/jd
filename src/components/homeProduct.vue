@@ -1,5 +1,5 @@
 <template>
-    <div id="products" class="clear">
+    <div id="products" class="clear" ref="product">
         <div class="product left" v-for="(item,index) in list" :key="index">
             <router-link :to="'/product/'+ item.id + '?img=' + item.src">
             <img id="productPic" :src="item.img">
@@ -40,6 +40,8 @@ import axios from "axios"
 export default {
     data() {
         return {
+            page: 2,
+            total: 0,
             list: [
                 {
                     id: 0,
@@ -147,10 +149,45 @@ export default {
     created() {
         axios({
             method: "get",
-            url: "https://tunnel.alni.ml/"
+            url: "http://leeyiqing.site/productPage.php?page=1&size=20"
         }).then(res => {
             console.log(res)
-            this.list = res.data
+            this.list = res.data.data
+            this.total = res.data.total
+        })
+    },
+    mounted() {
+        document.addEventListener("scroll", () => {
+            let scrollDistance = document.documentElement.scrollTop
+            let maxDistance = this.$refs["product"].offsetHeight
+            let temp =  maxDistance - 600
+            let flg = false
+            let pages = Math.ceil(this.total / 20)
+            if (this.page >= pages) {
+                return
+            }
+            if (scrollDistance > temp) {
+                flg = true
+                this.page++
+                // setTimeout()
+                console.log(this.page + "============================")
+
+                if (flg = true) {
+                    if (this.page >= pages) {
+                        flg = false
+                        return
+                    }
+                    axios({
+                        method: "get",
+                        url: `http://leeyiqing.site/productPage.php?page=${this.page}&size=20`
+                    }).then(res => {
+                        // console.log(res)
+                        this.list.push(...res.data.data)
+                        console.log(this.page)
+                        flg = false
+                    })
+                }
+            }
         })
     }
 }
