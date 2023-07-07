@@ -5,7 +5,7 @@
             <div class="info flex-item">
                 <slot></slot>
             </div>
-            <div class="more">更多</div>
+            <div class="more"><van-icon name="ellipsis" /></div>
         </div>
     </div>
 </template>
