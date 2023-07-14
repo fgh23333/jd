@@ -207,10 +207,6 @@ export default {
 
 <style lang="less">
 #productInfo {
-    .space {
-        height: 50px;
-        width: 100%;
-    }
 
     .chosenOption {
         text-align: center;
