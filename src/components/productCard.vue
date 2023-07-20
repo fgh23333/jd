@@ -15,7 +15,7 @@
 export default {
     data() {
         return {
-
+            allChecked: false
         }
     },
     props: {
@@ -23,6 +23,19 @@ export default {
             type: Array,
             default: []
         }
+    },
+    updated() {
+        // console.log(this.list.every(item => item.checked));
+        this.allChecked = this.list.every(item => item.checked)
+        // this.list.forEach(item => {
+        //     item.checked = value;
+        // });
+        if (this.allChecked == true) {
+            this.$emit("allChecked", true)
+        } else {
+            this.$emit("allChecked", false)
+        }
+        console.log(this.allChecked + "???")
     }
 }
 </script>
@@ -32,6 +45,7 @@ export default {
 
     .itemCard {
         margin-top: 20px;
+
         .itemCheck {
             padding: 42px 10px;
         }

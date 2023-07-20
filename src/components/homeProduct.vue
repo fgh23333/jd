@@ -170,7 +170,6 @@ export default {
                 method: "get",
                 url: `http://leeyiqing.site/productPage.php?page=${this.currentPage}&size=20`
             }).then(res => {
-                console.log(res.data.data)
                 const newData = res.data.data;
                 this.list = this.list.concat(newData);
                 this.currentPage++;

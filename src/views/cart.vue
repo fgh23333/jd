@@ -7,13 +7,13 @@
       <van-button round type="info" color="linear-gradient(to right, #ff6034, #ee0a24)"
         class="loginButton">登录</van-button>
     </div>
-    <productCard v-if="list.length > 0" :list="list"></productCard>
+    <productCard v-if="list.length > 0" :list="list" @allChecked="receiveMessage"></productCard>
     <div class="emptyIcon" v-else>
       <img class="emptyLogo" src="../assets/icon/10050.png">
       <div class="emptyText">登录后可同步购物车中商品</div>
     </div>
     <van-submit-bar :price="totalPrice" button-text="提交订单" @submit="onSubmit">
-      <van-checkbox v-model="checked">全选</van-checkbox>
+      <van-checkbox v-model="checked" checked-color="#ee0a24">全选</van-checkbox>
       <!-- <template #tip>
         你的收货地址不支持同城送, <span @click="onClickEditAddress">修改地址</span>
       </template> -->
@@ -41,7 +41,7 @@ export default {
           price: "59.00",
           discount: "0",
           src: require("../assets/product/1.png"),
-          checked: true,
+          checked: false,
           value: 1
         },
         {
@@ -53,7 +53,7 @@ export default {
           price: "34.90",
           discount: "2件9折",
           src: require("../assets/product/2.png"),
-          checked: true,
+          checked: false,
           value: 1
         },
         {
@@ -65,7 +65,7 @@ export default {
           price: "1198.00",
           discount: "每满500-150",
           src: require("../assets/product/3.png"),
-          checked: true,
+          checked: false,
           value: 1
         },
         {
@@ -77,12 +77,19 @@ export default {
           price: "59.90",
           discount: "满119享9折",
           src: require("../assets/product/4.png"),
-          checked: true,
+          checked: false,
           value: 1
         }
       ]
     }
   },
+  // updated() {
+  //   if (this.checked == true) {
+      
+  //   } else {
+      
+  //   }
+  // },
   components: {
     bottomBar,
     topBar,
@@ -91,6 +98,11 @@ export default {
   methods: {
     onSubmit() {
       console.log()
+    },
+    receiveMessage(allChecked) {
+      this.checked = allChecked;
+      console.log(allChecked + "+++");
+      console.log(this.checked + "===");
     }
   },
   computed: {
