@@ -7,7 +7,10 @@
                 <input type="search" id="search-in" placeholder="扫地机器人智能">
             </div>
         </div>
-        <div id="login" class="left">登录</div>
+        <div id="login" class="left">
+            <span v-if="$store.state.isLogin" @click="$store.commit('changeLogin', false)">退出</span>
+            <span v-else><router-link to="/login">登录</router-link></span>
+        </div>
     </div>
 </template>
 
@@ -27,6 +30,10 @@
             width: 50px;
             color: white;
             line-height: 44px;
+
+            a{
+                color: white;
+            }
         }
 
         #search {

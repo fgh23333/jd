@@ -1,7 +1,7 @@
 <template>
-    <div>
-        个人中心
-        <bottomBar active="/me"></bottomBar>
+  <div id="selfCenter">
+    个人中心
+    <bottomBar active="/me"></bottomBar>
   </div>
 </template>
 

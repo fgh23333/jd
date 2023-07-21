@@ -2,10 +2,12 @@
   <div id="cart">
     <topBar>购物车</topBar>
     <div class="space"></div>
-    <div class="login">
+    <div class="login" v-if="!$store.state.isLogin">
       <span class="loginText">登录后可同步购物车中商品</span>
-      <van-button round type="info" color="linear-gradient(to right, #ff6034, #ee0a24)"
-        class="loginButton">登录</van-button>
+      <router-link to="/login">
+        <van-button round type="info" color="linear-gradient(to right, #ff6034, #ee0a24)"
+          class="loginButton">登录</van-button>
+      </router-link>
     </div>
     <productCard v-if="list.length > 0" :list="list" @change="receiveMessage"></productCard>
     <div class="emptyIcon" v-else>
