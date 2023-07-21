@@ -7,16 +7,13 @@
       <van-button round type="info" color="linear-gradient(to right, #ff6034, #ee0a24)"
         class="loginButton">登录</van-button>
     </div>
-    <productCard v-if="list.length > 0" :list="list" @allChecked="receiveMessage"></productCard>
+    <productCard v-if="list.length > 0" :list="list" @change="receiveMessage"></productCard>
     <div class="emptyIcon" v-else>
       <img class="emptyLogo" src="../assets/icon/10050.png">
       <div class="emptyText">登录后可同步购物车中商品</div>
     </div>
     <van-submit-bar :price="totalPrice" button-text="提交订单" @submit="onSubmit">
-      <van-checkbox v-model="checked" checked-color="#ee0a24">全选</van-checkbox>
-      <!-- <template #tip>
-        你的收货地址不支持同城送, <span @click="onClickEditAddress">修改地址</span>
-      </template> -->
+      <van-checkbox v-model="checked" checked-color="#ee0a24" @click="click">全选</van-checkbox>
     </van-submit-bar>
     <bottomBar active="/cart"></bottomBar>
   </div>
@@ -83,13 +80,6 @@ export default {
       ]
     }
   },
-  // updated() {
-  //   if (this.checked == true) {
-      
-  //   } else {
-      
-  //   }
-  // },
   components: {
     bottomBar,
     topBar,
@@ -101,8 +91,11 @@ export default {
     },
     receiveMessage(allChecked) {
       this.checked = allChecked;
-      console.log(allChecked + "+++");
-      console.log(this.checked + "===");
+    },
+    click() {
+      this.list.forEach((item) => {
+        item.checked = this.checked
+      });
     }
   },
   computed: {

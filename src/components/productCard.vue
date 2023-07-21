@@ -1,7 +1,7 @@
 <template>
     <div id="productCard">
         <div class="itemCard clear" v-for="item in list" :key="item.id">
-            <van-checkbox class="itemCheck left" v-model="item.checked" checked-color="#ee0a24" />
+            <van-checkbox class="itemCheck left" v-model="item.checked" checked-color="#ee0a24" @change="change" />
             <van-card class="itemInfo left" :price="item.price" :title="item.describe" :thumb="item.src">
                 <template #num>
                     <van-stepper v-model="item.value" theme="round" button-size="22" integer />
@@ -24,18 +24,14 @@ export default {
             default: []
         }
     },
-    updated() {
-        // console.log(this.list.every(item => item.checked));
-        this.allChecked = this.list.every(item => item.checked)
-        // this.list.forEach(item => {
-        //     item.checked = value;
-        // });
-        if (this.allChecked == true) {
-            this.$emit("allChecked", true)
-        } else {
-            this.$emit("allChecked", false)
+    methods: {
+        change() {
+            this.allChecked = this.list.every(item => item.checked)
+            this.$emit("change", this.allChecked)
+            this.list.forEach((item) => {
+                item.allChecked = this.checked
+            });
         }
-        console.log(this.allChecked + "???")
     }
 }
 </script>
