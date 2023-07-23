@@ -1,7 +1,7 @@
 <template>
     <div id="grid">
         <van-grid :column-num="3">
-            <van-grid-item v-for="(item, index) in list" :key="index" :icon="photo" :text="text" />
+            <van-grid-item v-for="(item, index) in itemList" :key="index" :icon="item.photo" :text="item.text" />
         </van-grid>
     </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
     data() {
         return {
-            list: [
+            itemList: [
                 {
                     photo: require("../assets/category/1.png"),
                     text: "空调"

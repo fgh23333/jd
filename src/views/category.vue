@@ -12,12 +12,7 @@
       </div>
     </div>
     <div class="space"></div>
-    <el-container>
-      <el-aside width="100px">
-        <categories></categories>
-      </el-aside>
-      <el-main>Main</el-main>
-    </el-container>
+    <categories></categories>
     <div class="space"></div>
     <bottomBar active="/category"></bottomBar>
   </div>
@@ -26,11 +21,13 @@
 <script>
 import bottomBar from "../components/bottomBar.vue";
 import categories from "../components/categories.vue";
+import grid from "../components/grid.vue";
 
 export default {
   components: {
     bottomBar,
-    categories
+    categories,
+    grid
   },
   methods: {
     goBack() {
@@ -63,6 +60,7 @@ export default {
     color: #333;
     text-align: center;
     line-height: 160px;
+    padding: 0;
   }
 
   .searchBar {
@@ -105,4 +103,5 @@ export default {
       }
     }
   }
-}</style>
+}
+</style>
