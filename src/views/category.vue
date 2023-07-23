@@ -11,7 +11,14 @@
         </div>
       </div>
     </div>
-    <categories></categories>
+    <div class="space"></div>
+    <el-container>
+      <el-aside width="100px">
+        <categories></categories>
+      </el-aside>
+      <el-main>Main</el-main>
+    </el-container>
+    <div class="space"></div>
     <bottomBar active="/category"></bottomBar>
   </div>
 </template>
@@ -35,12 +42,35 @@ export default {
 
 <style lang="less">
 #category {
+
+  .el-header,
+  .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+  }
+
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+  }
+
   .searchBar {
     height: 44px;
     text-align: center;
     width: 100%;
     position: fixed;
-    
+
     .back {
       width: 50px;
       line-height: 44px;
@@ -62,7 +92,7 @@ export default {
     #inputbox {
       line-height: 30px;
       position: relative;
-      
+
 
       #search-in {
         border: none;
@@ -75,5 +105,4 @@ export default {
       }
     }
   }
-}
-</style>
+}</style>
