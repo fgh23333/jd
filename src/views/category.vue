@@ -11,18 +11,19 @@
         </div>
       </div>
     </div>
-    
-
+    <categories></categories>
     <bottomBar active="/category"></bottomBar>
   </div>
 </template>
 
 <script>
 import bottomBar from "../components/bottomBar.vue";
+import categories from "../components/categories.vue";
 
 export default {
   components: {
-    bottomBar
+    bottomBar,
+    categories
   },
   methods: {
     goBack() {
