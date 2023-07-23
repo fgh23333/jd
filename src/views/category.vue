@@ -21,13 +21,11 @@
 <script>
 import bottomBar from "../components/bottomBar.vue";
 import categories from "../components/categories.vue";
-import grid from "../components/grid.vue";
 
 export default {
   components: {
     bottomBar,
-    categories,
-    grid
+    categories
   },
   methods: {
     goBack() {

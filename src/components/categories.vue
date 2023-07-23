@@ -4,15 +4,54 @@
             <el-aside width="100px">
                 <div class="cate">
                     <van-grid :column-num="1">
-                        <van-grid-item v-for="(item, index) in list" :key="index" :text="item.text" />
+                        <van-grid-item v-for="(item, index) in list" :key="index" :text="item.text"
+                            @click="sequence(index)"></van-grid-item>
                     </van-grid>
                 </div>
             </el-aside>
             <el-main>
                 <div class="grid">
-                    <van-grid :column-num="3">
-                        <van-grid-item v-for="(item, index) in itemList" :key="index" :icon="item.photo"
-                            :text="item.text" />
+                    <van-grid :column-num="3" v-if="seq == 0">
+                        <van-grid-item v-for="(item, i) in itemList0" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 1">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 2">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 3">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 4">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 5">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 6">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 7">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 8">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 9">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 10">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 11">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 12">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
+                    </van-grid>
+                    <van-grid :column-num="3" v-if="seq == 13">
+                        <van-grid-item v-for="(item, i) in itemList1" :key="i" :icon="item.photo" :text="item.text" />
                     </van-grid>
                 </div>
             </el-main>
@@ -24,6 +63,7 @@
 export default {
     data() {
         return {
+            seq: 0,
             list: [
                 {
                     text: "热门推荐"
@@ -66,18 +106,9 @@ export default {
                 },
                 {
                     text: "医药保健"
-                },
-                {
-                    text: "酒水饮料"
-                },
-                {
-                    text: "运动户外"
-                },
-                {
-                    text: "汽车生活"
                 }
             ],
-            itemList: [
+            itemList0: [
                 {
                     photo: require("../assets/category/1.png"),
                     text: "空调"
@@ -158,6 +189,49 @@ export default {
                     photo: require("../assets/category/20.png"),
                     text: "游戏机"
                 }
+            ],
+            itemList1: [
+                {
+                    photo: require("../assets/category/21.png"),
+                    text: "小米"
+                },
+                {
+                    photo: require("../assets/category/22.png"),
+                    text: "华为"
+                },
+                {
+                    photo: require("../assets/category/23.png"),
+                    text: "荣耀"
+                },
+                
+                {
+                    photo: require("../assets/category/24.png"),
+                    text: "iPhone"
+                },
+                {
+                    photo: require("../assets/category/25.png"),
+                    text: "vivo"
+                },
+                {
+                    photo: require("../assets/category/26.png"),
+                    text: "OPPO"
+                },
+                {
+                    photo: require("../assets/category/27.png"),
+                    text: "魅族"
+                },
+                {
+                    photo: require("../assets/category/28.png"),
+                    text: "三星"
+                },
+                {
+                    photo: require("../assets/category/29.png"),
+                    text: "一加"
+                },
+                {
+                    photo: require("../assets/category/30.png"),
+                    text: "努比亚"
+                }
             ]
         }
     },
@@ -167,6 +241,9 @@ export default {
         },
         handleClose(key, keyPath) {
             console.log(key, keyPath);
+        },
+        sequence(e) {
+            this.seq = e
         }
     }
 }
