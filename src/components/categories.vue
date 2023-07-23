@@ -232,7 +232,43 @@ export default {
                     photo: require("../assets/category/30.png"),
                     text: "努比亚"
                 }
-            ]
+            ],
+            itemList2: [
+                
+            ],
+            itemList3: [
+
+            ],
+            itemList4: [
+
+            ],
+            itemList5: [
+
+            ],
+            itemList6: [
+
+            ],
+            itemList7: [
+
+            ],
+            itemList8: [
+
+            ],
+            itemList9: [
+
+            ],
+            itemList10: [
+
+            ],
+            itemList11: [
+
+            ],
+            itemList12: [
+
+            ],
+            itemList13: [
+
+            ],
         }
     },
     methods: {
