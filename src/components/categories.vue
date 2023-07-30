@@ -292,10 +292,9 @@ export default {
             }
             if(scrollDistance > 460) {
                 document.documentElement.scrollTop = 460
-            }
+            } 
             console.log(scrollDistance)
         })
-        
     }
 }
 </script>
