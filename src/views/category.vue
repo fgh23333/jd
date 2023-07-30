@@ -66,6 +66,7 @@ export default {
     text-align: center;
     width: 100%;
     position: fixed;
+    z-index: 999;
 
     .back {
       width: 50px;

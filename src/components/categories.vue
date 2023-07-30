@@ -1,5 +1,6 @@
 <template>
     <div id="categories">
+        <div class="blankSpace"></div>
         <el-container>
             <el-aside width="100px">
                 <div class="cate">
@@ -56,6 +57,7 @@
                 </div>
             </el-main>
         </el-container>
+        <div class="blankSpace"></div>
     </div>
 </template>
         
@@ -281,10 +283,27 @@ export default {
         sequence(e) {
             this.seq = e
         }
+    },
+    mounted() {
+        document.addEventListener("scroll", () => {
+            let scrollDistance = document.documentElement.scrollTop
+            if(scrollDistance < 200 && scrollDistance >= 0) {
+                document.documentElement.scrollTop = 200
+            }
+            if(scrollDistance > 460) {
+                document.documentElement.scrollTop = 460
+            }
+            console.log(scrollDistance)
+        })
+        
     }
 }
 </script>
 
 <style lang="less">
-
+#categories {
+    .blankSpace {
+        height: 200px;
+    }
+}
 </style>
