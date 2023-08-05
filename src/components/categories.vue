@@ -1,15 +1,16 @@
 <template>
     <div id="categories">
-        <div class="blankSpace"></div>
         <el-container>
-            <el-aside width="100px">
-                <div class="cate">
-                    <van-grid :column-num="1">
-                        <van-grid-item v-for="(item, index) in list" :key="index" :text="item.text"
-                            @click="sequence(index)"></van-grid-item>
-                    </van-grid>
-                </div>
-            </el-aside>
+            <div class="container" @touchstart="onStart" @touchend="onEnd" @touchmove="onMove">
+                <el-aside width="100px">
+                    <div class="cate" ref="cate" :class="{transition:flg}">
+                        <van-grid :column-num="1">
+                            <van-grid-item v-for="(item, index) in list" :key="index" :text="item.text"
+                                @click="sequence(index)"></van-grid-item>
+                        </van-grid>
+                    </div>
+                </el-aside>
+            </div>
             <el-main>
                 <div class="grid">
                     <van-grid :column-num="3" v-if="seq == 0">
@@ -57,7 +58,6 @@
                 </div>
             </el-main>
         </el-container>
-        <div class="blankSpace"></div>
     </div>
 </template>
         
@@ -205,7 +205,7 @@ export default {
                     photo: require("../assets/category/23.png"),
                     text: "荣耀"
                 },
-                
+
                 {
                     photo: require("../assets/category/24.png"),
                     text: "iPhone"
@@ -236,7 +236,7 @@ export default {
                 }
             ],
             itemList2: [
-                
+
             ],
             itemList3: [
 
@@ -271,6 +271,10 @@ export default {
             itemList13: [
 
             ],
+            flg: false,
+            startTop: 0,
+            endTop: 0,
+            temp: 0
         }
     },
     methods: {
@@ -282,27 +286,42 @@ export default {
         },
         sequence(e) {
             this.seq = e
-        }
-    },
-    mounted() {
-        document.addEventListener("scroll", () => {
-            let scrollDistance = document.documentElement.scrollTop
-            if(scrollDistance < 200 && scrollDistance >= 0) {
-                document.documentElement.scrollTop = 200
+        },
+        onStart(e) {
+            this.startTop = e.changedTouches[0].clientY
+            this.flg = false
+        },
+        onEnd() {
+            if(this.endTop >= 0) {
+                this.$refs["cate"].style.top = 0
+                this.endTop = 0
             }
-            if(scrollDistance > 460) {
-                document.documentElement.scrollTop = 460
-            } 
-            console.log(scrollDistance)
-        })
+            console.log(this.endTop);
+            this.temp = this.endTop
+        },
+        onMove(e) {
+            let distance = e.changedTouches[0].clientY - this.startTop
+            this.endTop = distance + this.temp
+            if(distance > 150) {
+                distance = 150
+                this.flg = true
+            }
+            this.$refs["cate"].style.top = distance + "px"
+        }
     }
 }
 </script>
 
 <style lang="less">
+.transition {
+    transition: top 0.3s linear;
+}
+
 #categories {
-    .blankSpace {
-        height: 200px;
+    .cate {
+        position: relative;
     }
+    height: calc(100vh - 100px);
+    overflow: hidden;
 }
 </style>
