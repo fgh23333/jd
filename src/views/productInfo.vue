@@ -173,7 +173,7 @@ export default {
 
         axios({
             method: "get",
-            url: "http://leeyiqing.site/productbyID.php?pid=" + pid
+            url: "https://api.alni.eu.org/productbyID.php?pid=" + pid
         }).then(res => {
             this.obj = res.data[0]
         })

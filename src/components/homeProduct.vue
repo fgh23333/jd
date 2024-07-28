@@ -168,7 +168,7 @@ export default {
             this.isLoading = true;
             axios({
                 method: "get",
-                url: `http://leeyiqing.site/productPage.php?page=${this.currentPage}&size=20`
+                url: `https://api.alni.eu.org/productPage.php?page=${this.currentPage}&size=20`
             }).then(res => {
                 const newData = res.data.data;
                 this.list = this.list.concat(newData);
